@@ -17,19 +17,19 @@ from .mixins import Base
 User = get_user_model()
 
 
-# class BlogListView(Base, FilterView):
-#     model = Result
-#     template_name = 'result_list.html'
-#     filterset_class = ResultFilter
+class BlogListView(Base, FilterView):
+    model = Result
+    template_name = 'result_list.html'
+    filterset_class = ResultFilter
 
 
-def get_queryset(self):
-    qr = super().get_queryset()
-    search = self.request.GET.get('search')
-    if search is not None:
-        return qr.filter(first_name__icontains=search, last_name__icontains=search, score_min__icontains=search,
-                         score_max__icontains=search)
-    return qr
+# def get_queryset(self):
+#     qr = super().get_queryset()
+#     search = self.request.GET.get('search')
+#     if search is not None:
+#         return qr.filter(first_name__icontains=search, last_name__icontains=search, score_min__icontains=search,
+#                          score_max__icontains=search)
+#     return qr
 
 
 
