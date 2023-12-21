@@ -6,19 +6,16 @@ from quizapp.models import Result
 User = get_user_model()
 
 
-# class ResultFilter(FilterSet):
-#     score_min = NumberFilter(field_name='total', lookup_expr='gt',
-#                              label='Score min', widget=forms.NumberInput(attrs={'class': 'form-control'}))
-#     score_max = NumberFilter(field_name='total', lookup_expr='lt',
-#                              label='Score max', widget=forms.NumberInput(attrs={'class': 'form-control'}))
-#
-#     class Meta:
-#         model = Result
-#         fields = {
-#             'total': ['gt', 'lt'],
-#             'score_min': ['icontains'],
-#             'score_max': ['icontains']
-#         }
+
+class ResultFilter(FilterSet):
+    score_min = NumberFilter(field_name='total', lookup_expr=['gt', 'lt'],
+                             label='Score', widget=forms.NumberInput(attrs={'class': 'form-control'}))
+
+    class Meta:
+        model = Result
+        fields = {
+            'total': ['gt', 'lt'],
+        }
 
 
 class UserFilter(FilterSet):
