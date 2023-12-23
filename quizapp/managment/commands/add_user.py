@@ -16,6 +16,7 @@ class Command(BaseCommand):
             print(options)
             content = f.readlines()
             for user in content:
+                user = user.strip().split()
                 User.objects.create(first_name=user[0], last_name=user[1], username=user[2], email=user[3],
                                     password=user[4])
 
